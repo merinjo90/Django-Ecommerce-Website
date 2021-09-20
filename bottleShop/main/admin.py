@@ -1,7 +1,8 @@
 from django.contrib import admin
-from .models import Category,Brand,Color,Size,Product,ProductAttribute
+from .models import Banner,Category,Brand,Color,Size,Product,ProductAttribute
 
 # Register your models here.
+admin.site.register(Banner)
 admin.site.register(Category)
 admin.site.register(Brand)
 admin.site.register(Color)
