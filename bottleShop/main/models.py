@@ -20,7 +20,7 @@ class Category(models.Model):
         verbose_name_plural='2. Categories'
 
     def image_tag(self):
-        return
+        return mark_safe('<img src="%s" width="50" height="50" />' %(self.image.url))
 
     def __str__(self):
         return self.title
