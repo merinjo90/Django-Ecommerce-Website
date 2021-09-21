@@ -68,12 +68,10 @@ class Product(models.Model):
     slug=models.CharField(max_length=400)
     detail=models.TextField()
     specifs=models.TextField()
-    #price=models.PositiveIntegerField()
     brand=models.ForeignKey(Brand,on_delete=models.CASCADE)
     category=models.ForeignKey(Category,on_delete=models.CASCADE)
-    color=models.ForeignKey(Color,on_delete=models.CASCADE)
-    size=models.ForeignKey(Size,on_delete=models.CASCADE)
     status=models.BooleanField(default=True)
+    is_featured=models.BooleanField(default=False)
 
     class Meta:
         verbose_name_plural='6. Products'
