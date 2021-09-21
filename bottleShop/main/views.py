@@ -35,3 +35,38 @@ def product_list(request):
             'colors':colors,
             'sizes':sizes,
         })
+
+#Product list According to category
+def category_product_list(request,cat_id):
+    category=Category.objects.get(id= cat_id)
+    data=Product.objects.filter(category=category)
+    cats = Product.objects.distinct().values('category__title', 'category_id')
+    colors = ProductAttribute.objects.distinct().values('color__title', 'color_id', 'color__color_cod')
+    sizes = ProductAttribute.objects.distinct().values('size__title', 'size_id')
+    brands = Product.objects.distinct().values('brand__title', 'brand_id')
+    return render(request,'category_product_list.html',
+            {
+                'data':data,
+                'cats': cats,
+                'brands': brands,
+                'colors': colors,
+                'sizes': sizes,
+            })
+
+
+#Product list According to Brand
+def brand_product_list(request,brand_id):
+    brand=Brand.objects.get(id= brand_id)
+    data=Product.objects.filter(brand=brand)
+    cats = Product.objects.distinct().values('category__title', 'category_id')
+    colors = ProductAttribute.objects.distinct().values('color__title', 'color_id', 'color__color_cod')
+    sizes = ProductAttribute.objects.distinct().values('size__title', 'size_id')
+    brands = Product.objects.distinct().values('brand__title', 'brand_id')
+    return render(request,'category_product_list.html',
+            {
+                'data':data,
+                'cats': cats,
+                'brands': brands,
+                'colors': colors,
+                'sizes': sizes,
+            })
