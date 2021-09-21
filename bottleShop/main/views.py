@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .models import Category,Brand,Product
+from .models import Category, Brand, Product, ProductAttribute
+
 
 # Create your views here.
 
@@ -20,9 +21,15 @@ def brand_list(request):
 #Product List
 def product_list(request):
     data=Product.objects.all().order_by('-id')
-    cats=Product.objects.distinct().values('category__title')
+    cats=Product.objects.distinct().values('category__title','category_id')
+    colors=ProductAttribute.objects.distinct().values('color__title','color_id','color__color_cod')
+    sizes = ProductAttribute.objects.distinct().values('size__title','size_id')
+    brands=Product.objects.distinct().values('brand__title','brand_id')
     return render(request,'product_list.html',
         {
             'data':data,
             'cats':cats,
+            'brands':brands,
+            'colors':colors,
+            'sizes':sizes,
         })
