@@ -32,18 +32,12 @@
 			<div class="card mb-4">
 				<h6 class="card-header">Categories</h6>
 				<div class="list-group list-group-flush">
+					{% for cat in cats %}
 					<li class="list-group-item">
 						<input type="checkbox" />&nbsp;
-						Category 1
+						{{cat.category__title}}
 					</li>
-					<li class="list-group-item">
-						<input type="checkbox" />&nbsp;
-						Category 2
-					</li>
-					<li class="list-group-item">
-						<input type="checkbox" />&nbsp;
-						Category 3
-					</li>
+					{% endfor %}
 				</div>
 			</div>
 			<!-- Filter 3 -->
