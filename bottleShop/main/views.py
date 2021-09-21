@@ -6,7 +6,8 @@ from .models import Category, Brand, Product, ProductAttribute
 
 #Home Page
 def home(request):
-    return render(request,'index.html')
+    data=Product.objects.filter(is_featured=True).order_by('-id')
+    return render(request,'index.html',{'data':data})
 
 #Category
 def category_list(request):
